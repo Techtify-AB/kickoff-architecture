@@ -19,8 +19,9 @@ Both agents use this file as their instruction set. Git is the sync layer.
    batch of tasks), commit, push to your feature branch, and run
    `gh pr create --title "..." --body "..."`. Report the PR URL in your response.
    Do NOT continue to the next phase without creating the PR first.
-4. **Tests from day one** — set up Playwright + Vitest in Phase 0. Every feature
-   needs at least one E2E test.
+4. **Tests when appropriate** — for production-grade projects, set up Playwright +
+   Vitest in Phase 0. For simple/prototype projects, skip test infrastructure
+   entirely and focus on building the product. The user can request tests later.
 5. **Create plan.md and memory.md** — these are your persistent state. Other
    sessions (and the user) rely on them.
 6. **Append to devlog.md before finishing** — a running journal of what each
@@ -209,8 +210,8 @@ A schema change without a migration is a guaranteed runtime crash.
 > Last updated: [date]
 
 ## Phase 0 — Bootstrap
-- [ ] Project scaffolding + test infrastructure
-- [ ] Playwright + Vitest configured with smoke tests
+- [ ] Project scaffolding
+- [ ] (If production-grade) Playwright + Vitest configured with smoke tests
 
 ## Phase 1 — [Core Feature]
 - [ ] T-1.1: [Task]
