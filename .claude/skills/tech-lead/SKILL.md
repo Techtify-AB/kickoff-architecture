@@ -96,14 +96,23 @@ is genuinely unstructured.
 
 ### Bootstrap commands (for default stack)
 
+NEVER use `create-next-app`, `create-vite`, or any scaffold tool that runs
+`git init`. These destroy the existing git history and GitHub remote.
+Instead, install packages manually:
+
 ```bash
-pnpm create next-app@latest project-name
+pnpm init
+pnpm add next@15 react react-dom
+pnpm add -D typescript @types/react @types/node tailwindcss@3 postcss autoprefixer
 pnpx shadcn@latest init
 pnpm add -D @playwright/test
 pnpm add -D vitest @vitejs/plugin-react @testing-library/react @testing-library/jest-dom
 pnpm add -D husky lint-staged
 npx husky init
 ```
+
+Create config files (`tsconfig.json`, `next.config.ts`, `tailwind.config.ts`,
+`src/app/layout.tsx`, etc.) manually.
 
 ### Automation (ships with project template)
 

@@ -109,16 +109,36 @@ When you receive the user's first message describing what to build:
 | Hosting | Vercel |
 | Auth | Ask the user |
 
-## Bootstrap Commands
+## Scaffolding Rules (CRITICAL)
 
-Pin to a stable Next.js version to avoid CVEs in bleeding-edge releases.
+This project directory already has a git repo with an initial commit pushed
+to GitHub. The `.claude/skills/`, `.cursor/`, and `.github/` directories are
+pre-configured. You MUST preserve them.
 
+**NEVER run any of these:**
+- `pnpm create next-app`, `create-vite`, `create-react-app`, or ANY scaffold
+  tool that runs `git init` internally. These destroy the existing git history
+  and disconnect the GitHub remote.
+
+**Instead, do this manually:**
 ```bash
-pnpm create next-app@15.5.18 . --ts --tailwind --eslint --app --src-dir --import-alias "@/*"
-pnpx shadcn@latest init
+# Initialize package.json (if not already present)
+pnpm init
+
+# Install your framework + deps
+pnpm add next@15 react react-dom
+pnpm add -D typescript @types/react @types/node
+
+# Install test tools
 pnpm add -D @playwright/test vitest @vitejs/plugin-react @testing-library/react
 npx playwright install
+
+# Install shadcn/ui (if using)
+pnpx shadcn@latest init
 ```
+
+Create `tsconfig.json`, `next.config.ts`, `tailwind.config.ts`, `src/app/layout.tsx`,
+etc. manually. This preserves the git history, remote, and pre-configured tooling.
 
 ## Git Protocol
 
